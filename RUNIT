@@ -1,0 +1,5 @@
+#!/bin/sh
+perl generate.pl eventtemp $*
+perl gentablexml.pl $* > loadme.xml
+nice -n 16 java -Dorg.xml.sax.driver=org.apache.crimson.parser.XMLReaderImpl CSoundTableDriver ./loadme.xml | csound --sched -dm6 -L stdin -o devaudio eventtemp.orc eventtemp.sco
+

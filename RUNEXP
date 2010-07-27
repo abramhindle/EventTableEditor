@@ -1,0 +1,2 @@
+#!/bin/sh
+java -cp .:crimson.jar -Dorg.xml.sax.driver=org.apache.crimson.parser.XMLReaderImpl  EventTableEditor.CSoundTableDriver $* | perl ../csound-filter/csound-filter.pl  | csound  -dm6 -L stdin -o devaudio tablExp.orc tablExp.sco
