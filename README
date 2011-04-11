@@ -1,0 +1,68 @@
+(c) 2002 Abram Hindle UNDER GPL3 license.
+If you need this code in a different license I do have a version which is 
+not GPL'd.
+
+Abram's Table Editor
+
+Version 0.1 -- released
+
+This is meant for editing csound tables.
+I have provided a sample score and orchestra which will be compatible with 
+the table editor.
+
+To use the table editor one will see a screen with a white panel, a panel with
+some text and buttons, then a panel with an add button.
+
+The white panel is the table editing panel, using your mouse you can draw the
+values that you want in the table, these values will be between min and max
+(you can set min and max). All these values will be associated with an index
+in table determined by the start and end values.
+
++------------------------+-------+-----+
+|     |      |     |     |(A)|(B)|     |
+|(G)  |      |     |     +---+---+     |
+|     |      |     |     |(C)|(D)|     |
+|------------------------+---+---+ ADD |
+|     |      |     |     |(E)|(F)|     |
+|(H)  |      |     |     +---+---+     |
+|     |      |     |     |ZER|SET|     |
++------------------------+---+---+-----+
+
+(A) - Instrument Number, this is the table setter instrument number.
+(B) - Table Number, indicates which table to change
+(C) - Minimum value, what the lowest value is 
+(D) - Maximum value, what the highest value is
+(E) - Start Value, The starting index
+(F) - End Value, The ending index, forinstance if the table was size 256 you
+would change this to 256.
+
+If any of items A to F change press the RE/SET button to initialize the widget
+to your new settings.
+
+At anytime you may click ZERO to zero the table
+
+(G) Positive values
+(H) Negative values
+
+Add Button adds more tables, which is useful.
+Basically we send messages when the table is changed to CSOUND through STDIN
+. These messages then set values in a table. You can then use these tables for
+anything.
+
+
+Provided is an example waveguide orchestra and score. 
+Table 1 is the wave to be oscillated.
+Table 2 is the waveguide.
+Table 3 is the next wave to be oscillated.
+Table 4 is the waveguide for table 3.
+
+
+So your tables must match the tables in your score.
+
+Note this DOES NOT READ tables, it only sets not gets.
+
+Have fun! You can make some nasty sounds with this baby!
+
+./RUN will run the demo, you need Java 1.4.
+
+Abram
