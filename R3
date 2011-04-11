@@ -1,0 +1,2 @@
+#!/bin/sh
+java -Dorg.xml.sax.driver=org.apache.crimson.parser.XMLReaderImpl CSoundTableDriver $1.xml | csound --sched -dm6 -L stdin -o devaudio $1.orc $1.sco
