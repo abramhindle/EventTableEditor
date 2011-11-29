@@ -1,7 +1,7 @@
 #!/bin/sh
-jackd -d alsa -r 44100 -S  -p 512 &
-(sleep 10 ; jack_connect csound5:output1 system:playback_1) &
-(sleep 10 ; jack_connect csound5:output1 system:playback_2) &
-sleep 5
-java -cp .:crimson.jar -Dorg.xml.sax.driver=org.apache.crimson.parser.XMLReaderImpl  EventTableEditor.CSoundTableDriver $* | perl ../csound-filter/csound-filter.pl  | csound -dm6  -+rtaudio=jack  -o devaudio -b 512 -B 1024 -L stdin  tableSet.orc tableSet.sco
-killall jackd
+#jackd -d alsa -r 44100 -S  -p 512 &
+#(sleep 10 ; jack_connect csound5:output1 system:playback_1) &
+#(sleep 10 ; jack_connect csound5:output1 system:playback_2) &
+#sleep 5
+java -cp .:crimson.jar -Dorg.xml.sax.driver=org.apache.crimson.parser.XMLReaderImpl  EventTableEditor.CSoundTableDriver $* | perl ../csound-filter/csound-filter.pl  | csound -dm6  -+rtaudio=jack  -o devaudio -b 800 -B 2048 -L stdin  tableSet.orc tableSet.sco
+#killall jackd
