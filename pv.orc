@@ -2,12 +2,12 @@ sr = 44100
 ksmps = 32
 nchnls = 2
 
-instr 1
+instr 99
 ilen=p3
 ifftsize = 128				;fft size
 ioverlap = 64				;overlap
 knewamp  = 0				;new value for amplitudes
-ifn = 1
+ifn = p4
 fsrc pvsinit ifftsize
 	pvsftr	fsrc,ifn,ifn+1		;read modified data back to fsrc
 ;aout	pvsynth	fsrc			;and resynth
@@ -24,5 +24,17 @@ p3 = 1/44100
 itable = p4	; table
 iindex = p5	; index
 tableiw     p6   , iindex, itable, 0, 0, 0 
+endin
+
+
+instr 9999 ; Scheduler
+        it1 = p4
+        instrnum = p5
+        idur = p6
+	ip4  = p7
+kincite oscili     1,.33,it1
+kincite = abs(kincite)
+kincite = (kincite > 0.1)?1:0
+schedkwhen kincite, 0.001, 10, instrnum, 0.001, idur, ip4
 endin
 
