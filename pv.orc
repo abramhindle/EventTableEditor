@@ -32,9 +32,9 @@ instr 9999 ; Scheduler
         instrnum = p5
         idur = p6
 	ip4  = p7
-kincite oscili     1,.33,it1
+kincite oscili     1,1/4.0,it1
 kincite = abs(kincite)
 kincite = (kincite > 0.1)?1:0
-schedkwhen kincite, 0.001, 10, instrnum, 0.001, idur, ip4
+schedkwhen kincite, 0.03125, 0, instrnum, 0, idur, ip4
 endin
 
